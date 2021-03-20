@@ -4,6 +4,10 @@ body {
   line-height: 1;
 }
 
+main {
+  margin-bottom: 4em;
+}
+
 textarea{
   background: transparent;
   border: none;
@@ -15,7 +19,7 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  /* background-color: transparent; */
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -25,21 +29,31 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-block{
+/* Not sure what this is for */
+/* .time-block{
   text-align: center;
   border-radius: 15px;
-}
+} */
 
-.row {
+.tasks {
+  background-color: #d3d3d3;
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
 }
 
+.input-group {
+  height: 80px;
+}
+
 .hour {
   background-color: #ffffff;
   color: #000000;
+  border: none;
+  width: 5.7em;
   border-top: 1px dashed #000000;
+  display: inline-block;
+  text-align: right;
 }
 
 .past {
@@ -63,9 +77,13 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  font-size: x-large;
+  width: 4.2em;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
+.saveBtn:hover {
+  /* font-size: xx-large; */
+  color: black;
   transition: all .3s ease-in-out;
+  background-color: #09caf5;
 }
