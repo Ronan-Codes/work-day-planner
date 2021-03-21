@@ -1,24 +1,59 @@
-var tasks = {};
+var tasks = {}
+
+var loadTasks = function() {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+
+    // if nothing in localStorage, create a new object to track all task time arrays
+    if (!tasks) {
+        tasks = {
+            9: [],
+            10: [],
+            11: [],
+            12: [],
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: []
+        }
+    }
+
+    // loop over object properties
+    $.each(tasks, function(time, arr) {
+        arr.forEach(function(task) {
+            var taskId = task.taskId;
+            var text = task.text;
+
+            console.log(taskId);
+            console.log(time)
+            console.log(text)
+
+            $("textarea[data-id='" + time + "']").val(text);
+        })
+    })
+}
+
 
 // Current Date
 var currentDay = moment().format('dddd, MMMM Do')
 $("#currentDay").text(currentDay)
 
-var loadTasks = function() {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
+// when you click on a save button, prevent reset? and save task to Array then localStorage
+$(".input-group").on("click", "button", function() {
+    event.preventDefault();
 
-    // if nothing in localStorage, create new object to track all task status arrays
-    if (!tasks) {
-        tasks = {
-          past: [],
-          preset: [],
-          future: []
-        }
-      }
+    // get data-id of button
+    var taskId = $(this).attr("data-id");
+    // get value of corresponding textarea
+    var taskContent = $("textarea[data-id='"+taskId+"']").val()
 
-    // loop over object properties
-    $.each(tasks, function(list, arr) {
-        // then loop over sub-array
-        arr.for
+    tasks[taskId].push({
+        text: taskContent,
+        taskId: taskId
     })
-}
+
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+
+})
+
+loadTasks();
