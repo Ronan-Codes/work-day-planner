@@ -45,13 +45,13 @@ var auditTask = function() {
 
         // if (hour > currentTime)
         if (currentTimeParsed > hourTest) {
-            $(this).addClass("past");
+            $(this).addClass("past past:focus");
         }
         else if (currentTimeParsed < hourTest) {
-            $(this).addClass("future");
+            $(this).addClass("future future:focus");
         }
         else {
-            $(this).addClass("present");
+            $(this).addClass("present present:focus");
         }
     })
 
