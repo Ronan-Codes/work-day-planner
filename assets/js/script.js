@@ -1,7 +1,7 @@
 var tasks = {}
 
 var loadTasks = function () {
-    tasks = JSON.parse(sessionStorage.getItem("tasks"));
+    tasks = JSON.parse(localStorage.getItem("tasks"));
 
     // If nothing in localStorage, create a new object to track all task time arrays
     if (!tasks) {
@@ -71,7 +71,7 @@ $(".input-group").on("click", "button", function () {
     })
 
     // Update localStorage
-    sessionStorage.setItem("tasks", JSON.stringify(tasks))
+    localStorage.setItem("tasks", JSON.stringify(tasks))
 })
 
 auditTask();
