@@ -19,7 +19,6 @@ textarea {
 
 .jumbotron {
   text-align: center;
-  /* background-color: transparent; */
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -28,12 +27,6 @@ textarea {
 .description {
   white-space: pre-wrap;
 }
-
-/* Not sure what this is for */
-/* .time-block{
-  text-align: center;
-  border-radius: 15px;
-} */
 
 .tasks {
   white-space: pre-wrap;
@@ -78,7 +71,6 @@ textarea {
 }
 
 .saveBtn:hover {
-  /* font-size: xx-large; */
   color: black;
   transition: all .3s ease-in-out;
   background-color: #09caf5;

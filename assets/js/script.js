@@ -1,6 +1,6 @@
 var tasks = {}
 
-var loadTasks = function() {
+var loadTasks = function () {
     tasks = JSON.parse(localStorage.getItem("tasks"));
 
     // If nothing in localStorage, create a new object to track all task time arrays
@@ -19,8 +19,8 @@ var loadTasks = function() {
     }
 
     // loop over object properties
-    $.each(tasks, function(time, arr) {
-        arr.forEach(function(task) {
+    $.each(tasks, function (time, arr) {
+        arr.forEach(function (task) {
             var text = task.text;
 
             // Load tasks for each time block
@@ -29,43 +29,40 @@ var loadTasks = function() {
     })
 }
 
-
-// Current Date
+// Current Day display for header
 var currentDay = moment().format('dddd, MMMM Do')
 $("#currentDay").text(currentDay)
-// Current Time
+
+// Current Time to use for auditing/color-coding tasks
 var currentTime = moment().hours()
 var currentTimeParsed = parseInt(currentTime)
 
 
 // Audit Tasks for color coding
-var auditTask = function() {
-    $("textarea").each(function() {
+var auditTask = function () {
+    $("textarea").each(function () {
         var hourTest = parseInt($(this).attr("id"));
 
         // if (hour > currentTime)
         if (currentTimeParsed > hourTest) {
             $(this).addClass("past past:focus");
-        }
-        else if (currentTimeParsed < hourTest) {
+        } else if (currentTimeParsed < hourTest) {
             $(this).addClass("future future:focus");
-        }
-        else {
+        } else {
             $(this).addClass("present present:focus");
         }
     })
 
 }
 
-
 // Save Task Handler
-$(".input-group").on("click", "button", function() {
+$(".input-group").on("click", "button", function () {
     event.preventDefault();
 
     // Get data-id of button
     var taskId = $(this).attr("data-id");
     // Get task value of corresponding textarea
-    var taskContent = $("textarea[data-id='"+taskId+"']").val()
+    var taskContent = $("textarea[data-id='" + taskId + "']").val()
 
     // Update tasks array
     tasks[taskId].push({
